@@ -1,0 +1,27 @@
+{
+    "name": "soen/xxl-executor",
+    "description": "description",
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Soen\\XxlExecutor\\": "src/"
+        }
+    },
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "soen",
+            "email": "soen66@163.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.2"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Soen\\XxlExecutor\\XxlExecutorProvider"
+            ]
+        }
+    }
+}
