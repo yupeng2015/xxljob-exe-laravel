@@ -2,6 +2,7 @@
 
 namespace Soen\XxlExecutor\Controllers;
 
+use Illuminate\Log\Logger;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
@@ -40,10 +41,10 @@ class XxlJobController
     {
         //请求数据
         $request = Request::post();
-        Log::channel("xxljob")->info("执行任务参数:", $request);
+        Log::channel('xxljob')->info("执行任务参数:", $request);
         $jobArr = config('xxl')['jobs'];
         /**
-         * @var callable $objCall
+         * @var callable $executorHandler
          */
         $executorHandler = $request["executorHandler"];
 
@@ -71,7 +72,6 @@ class XxlJobController
 
         $success = call_user_func($objCall,$request['executorParams']);
 
-        Log::channel("xxljob")->info();
         if($success){
             $storage->delete($jobIdFile);
             return Utils::jobExeCallback(200,"执行成功！");

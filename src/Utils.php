@@ -15,7 +15,6 @@ class Utils
 
     public static function fail(string $msg)
     {
-        Log::channel("xxljob")->error($msg);
         return ["code"=>500,"mag" => $msg];
     }
 
